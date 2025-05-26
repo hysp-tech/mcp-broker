@@ -1,36 +1,37 @@
+include makefiles/help.mk
 # Makefile for MCP Broker
 
-install:
+install:  ## Install all dependencies
 	npm run install-all
 
-client-install:
+client-install:  ## Install client dependencies
 	cd client && npm install
 
-server-install:
+server-install:  ## Install server dependencies
 	npm install
 
-build:
+build:  ## Build the project
 	npm run build
 
-start:
+start:  ## Start the project
 	npm start
 
-develop:
+develop:  ## Start the project in development mode	
 	npm run dev
 
-docker-build:
+docker-build:  ## Build the project in a docker container
 	docker build -t mcp-broker .
 
-docker-up:
+docker-up:  ## Start the project in a docker container
 	docker-compose up --build
 
-docker-down:
+docker-down:  ## Stop the project in a docker container
 	docker-compose down
 
-test:
+test:  ## Run tests
 	cd client && npm test
 
-lint:
+lint:  ## Run lint
 	echo "No lint command defined. Add your linter here."
 
 .PHONY: install client-install server-install build start develop docker-build docker-up docker-down test lint 
