@@ -1,0 +1,694 @@
+{
+  "metadata": {
+    "lastUpdated": "2025-05-26T17:33:00-07:00",
+    "source": "https://mcpserverhub.com/servers",
+    "totalServers": 41,
+    "officialServers": 18,
+    "communityServers": 23
+  },
+  "servers": [
+    {
+      "id": "filesystem",
+      "name": "Filesystem",
+      "description": "Secure file operations with configurable access controls",
+      "author": "Anthropic",
+      "category": "File Management",
+      "type": "official",
+      "tags": ["Official", "Storage", "Security"],
+      "version": "1.0.0",
+      "repository": "https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem",
+      "documentation": "https://modelcontextprotocol.io/docs/servers/filesystem",
+      "featured": true,
+      "tools": ["read_file", "write_file", "create_directory", "list_directory", "move_file", "search_files"],
+      "resources": ["file://", "directory://"],
+      "installation": {
+        "npm": "@modelcontextprotocol/server-filesystem",
+        "python": "mcp-server-filesystem"
+      }
+    },
+    {
+      "id": "git",
+      "name": "Git",
+      "description": "A Model Context Protocol server for Git repository interaction and automation.",
+      "author": "Anthropic",
+      "category": "Development",
+      "type": "official",
+      "tags": ["Official", "VCS"],
+      "version": "1.0.0",
+      "repository": "https://github.com/modelcontextprotocol/servers/tree/main/src/git",
+      "documentation": "https://modelcontextprotocol.io/docs/servers/git",
+      "featured": true,
+      "tools": ["git_status", "git_add", "git_commit", "git_push", "git_pull", "git_log"],
+      "resources": ["git://"],
+      "installation": {
+        "npm": "@modelcontextprotocol/server-git",
+        "python": "mcp-server-git"
+      }
+    },
+    {
+      "id": "github",
+      "name": "GitHub",
+      "description": "Repository management, file operations, and GitHub API integration",
+      "author": "Anthropic",
+      "category": "Development",
+      "type": "official",
+      "tags": ["Official", "VCS", "Github"],
+      "version": "1.2.0",
+      "repository": "https://github.com/modelcontextprotocol/servers/tree/main/src/github",
+      "documentation": "https://modelcontextprotocol.io/docs/servers/github",
+      "featured": true,
+      "tools": ["create_issue", "create_pull_request", "get_repository", "search_repositories", "get_file_contents"],
+      "resources": ["github://"],
+      "installation": {
+        "npm": "@modelcontextprotocol/server-github",
+        "python": "mcp-server-github"
+      }
+    },
+    {
+      "id": "gitlab",
+      "name": "Gitlab",
+      "description": "MCP Server for the GitLab API, enabling project management, file operations, and more.",
+      "author": "Anthropic",
+      "category": "Development",
+      "type": "official",
+      "tags": ["Official", "VCS", "Gitlab"],
+      "version": "1.0.0",
+      "repository": "https://github.com/modelcontextprotocol/servers/tree/main/src/gitlab",
+      "documentation": "https://modelcontextprotocol.io/docs/servers/gitlab",
+      "featured": false,
+      "tools": ["create_issue", "create_merge_request", "get_project", "search_projects", "get_file"],
+      "resources": ["gitlab://"],
+      "installation": {
+        "npm": "@modelcontextprotocol/server-gitlab",
+        "python": "mcp-server-gitlab"
+      }
+    },
+    {
+      "id": "google-drive",
+      "name": "Google Drive",
+      "description": "File access and search capabilities for Google Drive",
+      "author": "Anthropic",
+      "category": "Cloud Storage",
+      "type": "official",
+      "tags": ["Official", "Cloud", "Storage", "Google"],
+      "version": "1.0.0",
+      "repository": "https://github.com/modelcontextprotocol/servers/tree/main/src/gdrive",
+      "documentation": "https://modelcontextprotocol.io/docs/servers/gdrive",
+      "featured": false,
+      "tools": ["search_files", "read_file", "create_file", "update_file"],
+      "resources": ["gdrive://"],
+      "installation": {
+        "npm": "@modelcontextprotocol/server-gdrive",
+        "python": "mcp-server-gdrive"
+      }
+    },
+    {
+      "id": "postgresql",
+      "name": "PostgreSQL",
+      "description": "Read-only database access with schema inspection",
+      "author": "Anthropic",
+      "category": "Database",
+      "type": "official",
+      "tags": ["Official", "Database", "Storage"],
+      "version": "1.1.0",
+      "repository": "https://github.com/modelcontextprotocol/servers/tree/main/src/postgres",
+      "documentation": "https://modelcontextprotocol.io/docs/servers/postgres",
+      "featured": false,
+      "tools": ["execute_query", "list_tables", "describe_table", "create_table"],
+      "resources": ["postgres://"],
+      "installation": {
+        "npm": "@modelcontextprotocol/server-postgres",
+        "python": "mcp-server-postgres"
+      }
+    },
+    {
+      "id": "slack",
+      "name": "Slack",
+      "description": "Channel management and messaging capabilities",
+      "author": "Anthropic",
+      "category": "Communication",
+      "type": "official",
+      "tags": ["Official", "Communication"],
+      "version": "1.0.0",
+      "repository": "https://github.com/modelcontextprotocol/servers/tree/main/src/slack",
+      "documentation": "https://modelcontextprotocol.io/docs/servers/slack",
+      "featured": false,
+      "tools": ["send_message", "list_channels", "create_channel", "get_user_info"],
+      "resources": ["slack://"],
+      "installation": {
+        "npm": "@modelcontextprotocol/server-slack",
+        "python": "mcp-server-slack"
+      }
+    },
+    {
+      "id": "memory",
+      "name": "Memory",
+      "description": "Knowledge graph-based persistent memory system",
+      "author": "Anthropic",
+      "category": "Storage",
+      "type": "official",
+      "tags": ["Official", "Storage"],
+      "version": "1.0.0",
+      "repository": "https://github.com/modelcontextprotocol/servers/tree/main/src/memory",
+      "documentation": "https://modelcontextprotocol.io/docs/servers/memory",
+      "featured": false,
+      "tools": ["create_memory", "search_memories", "update_memory", "delete_memory"],
+      "resources": ["memory://"],
+      "installation": {
+        "npm": "@modelcontextprotocol/server-memory",
+        "python": "mcp-server-memory"
+      }
+    },
+    {
+      "id": "puppeteer",
+      "name": "Puppeteer",
+      "description": "Browser automation and web scraping capabilities",
+      "author": "Anthropic",
+      "category": "Automation",
+      "type": "official",
+      "tags": ["Official", "Automation", "Scraping"],
+      "version": "1.0.0",
+      "repository": "https://github.com/modelcontextprotocol/servers/tree/main/src/puppeteer",
+      "documentation": "https://modelcontextprotocol.io/docs/servers/puppeteer",
+      "featured": false,
+      "tools": ["navigate", "click", "type", "screenshot", "get_content"],
+      "resources": ["browser://"],
+      "installation": {
+        "npm": "@modelcontextprotocol/server-puppeteer",
+        "python": "mcp-server-puppeteer"
+      }
+    },
+    {
+      "id": "brave-search",
+      "name": "Brave Search",
+      "description": "Web search capabilities using Brave Search API",
+      "author": "Anthropic",
+      "category": "Search",
+      "type": "official",
+      "tags": ["Official", "Search"],
+      "version": "1.0.0",
+      "repository": "https://github.com/modelcontextprotocol/servers/tree/main/src/brave-search",
+      "documentation": "https://modelcontextprotocol.io/docs/servers/brave-search",
+      "featured": false,
+      "tools": ["web_search", "news_search", "image_search"],
+      "resources": ["search://"],
+      "installation": {
+        "npm": "@modelcontextprotocol/server-brave-search",
+        "python": "mcp-server-brave-search"
+      }
+    },
+    {
+      "id": "google-maps",
+      "name": "Google Maps",
+      "description": "Location services, directions, and place details",
+      "author": "Anthropic",
+      "category": "Location",
+      "type": "official",
+      "tags": ["Official", "Location", "Google"],
+      "version": "1.0.0",
+      "repository": "https://github.com/modelcontextprotocol/servers/tree/main/src/google-maps",
+      "documentation": "https://modelcontextprotocol.io/docs/servers/google-maps",
+      "featured": false,
+      "tools": ["search_places", "get_directions", "get_place_details", "geocode"],
+      "resources": ["maps://"],
+      "installation": {
+        "npm": "@modelcontextprotocol/server-google-maps",
+        "python": "mcp-server-google-maps"
+      }
+    },
+    {
+      "id": "fetch",
+      "name": "Fetch",
+      "description": "HTTP client for making requests to external APIs",
+      "author": "Anthropic",
+      "category": "HTTP",
+      "type": "official",
+      "tags": ["Official", "HTTP", "API"],
+      "version": "1.0.0",
+      "repository": "https://github.com/modelcontextprotocol/servers/tree/main/src/fetch",
+      "documentation": "https://modelcontextprotocol.io/docs/servers/fetch",
+      "featured": false,
+      "tools": ["get_request", "post_request", "put_request", "delete_request"],
+      "resources": ["http://", "https://"],
+      "installation": {
+        "npm": "@modelcontextprotocol/server-fetch",
+        "python": "mcp-server-fetch"
+      }
+    },
+    {
+      "id": "sentry",
+      "name": "Sentry",
+      "description": "A Model Context Protocol server for retrieving and analyzing issues from Sentry.io",
+      "author": "Anthropic",
+      "category": "Monitoring",
+      "type": "official",
+      "tags": ["Official", "Monitoring"],
+      "version": "1.0.0",
+      "repository": "https://github.com/modelcontextprotocol/servers/tree/main/src/sentry",
+      "documentation": "https://modelcontextprotocol.io/docs/servers/sentry",
+      "featured": false,
+      "tools": ["get_issues", "get_issue_details", "update_issue"],
+      "resources": ["sentry://"],
+      "installation": {
+        "npm": "@modelcontextprotocol/server-sentry",
+        "python": "mcp-server-sentry"
+      }
+    },
+    {
+      "id": "sqlite",
+      "name": "SQLite",
+      "description": "A Model Context Protocol (MCP) server implementation that provides database interaction and business intelligence capabilities through SQLite.",
+      "author": "Anthropic",
+      "category": "Database",
+      "type": "official",
+      "tags": ["Official", "Database", "Storage"],
+      "version": "1.0.0",
+      "repository": "https://github.com/modelcontextprotocol/servers/tree/main/src/sqlite",
+      "documentation": "https://modelcontextprotocol.io/docs/servers/sqlite",
+      "featured": false,
+      "tools": ["execute_query", "list_tables", "describe_table", "create_table"],
+      "resources": ["sqlite://"],
+      "installation": {
+        "npm": "@modelcontextprotocol/server-sqlite",
+        "python": "mcp-server-sqlite"
+      }
+    },
+    {
+      "id": "time",
+      "name": "Time",
+      "description": "A Model Context Protocol server that provides time and timezone conversion capabilities.",
+      "author": "Anthropic",
+      "category": "Utilities",
+      "type": "official",
+      "tags": ["Official", "Time"],
+      "version": "1.0.0",
+      "repository": "https://github.com/modelcontextprotocol/servers/tree/main/src/time",
+      "documentation": "https://modelcontextprotocol.io/docs/servers/time",
+      "featured": false,
+      "tools": ["get_current_time", "convert_timezone", "format_time"],
+      "resources": ["time://"],
+      "installation": {
+        "npm": "@modelcontextprotocol/server-time",
+        "python": "mcp-server-time"
+      }
+    },
+    {
+      "id": "sequential-thinking",
+      "name": "Sequential Thinking",
+      "description": "An MCP server implementation that provides a tool for dynamic and reflective problem-solving through a structured thinking process.",
+      "author": "Anthropic",
+      "category": "AI Tools",
+      "type": "official",
+      "tags": ["Official", "Agent"],
+      "version": "1.0.0",
+      "repository": "https://github.com/modelcontextprotocol/servers/tree/main/src/sequential-thinking",
+      "documentation": "https://modelcontextprotocol.io/docs/servers/sequential-thinking",
+      "featured": false,
+      "tools": ["think_step", "analyze_problem", "generate_solution"],
+      "resources": ["thinking://"],
+      "installation": {
+        "npm": "@modelcontextprotocol/server-sequential-thinking",
+        "python": "mcp-server-sequential-thinking"
+      }
+    },
+    {
+      "id": "everart",
+      "name": "EverArt",
+      "description": "Image generation server for Claude Desktop using EverArt's API.",
+      "author": "Anthropic",
+      "category": "AI Tools",
+      "type": "official",
+      "tags": ["Official", "Image", "AI"],
+      "version": "1.0.0",
+      "repository": "https://github.com/modelcontextprotocol/servers/tree/main/src/everart",
+      "documentation": "https://modelcontextprotocol.io/docs/servers/everart",
+      "featured": false,
+      "tools": ["generate_image", "edit_image", "upscale_image"],
+      "resources": ["image://"],
+      "installation": {
+        "npm": "@modelcontextprotocol/server-everart",
+        "python": "mcp-server-everart"
+      }
+    },
+    {
+      "id": "cloudflare",
+      "name": "Cloudflare",
+      "description": "Model Context Protocol (MCP) server for interacting with Cloudflare services.",
+      "author": "Community",
+      "category": "Cloud",
+      "type": "community",
+      "tags": ["Community", "Cloud", "Cloudflare"],
+      "version": "1.0.0",
+      "repository": "https://github.com/cloudflare/mcp-server-cloudflare",
+      "documentation": "https://github.com/cloudflare/mcp-server-cloudflare/blob/main/README.md",
+      "featured": false,
+      "tools": ["manage_dns", "manage_workers", "get_analytics"],
+      "resources": ["cloudflare://"],
+      "installation": {
+        "npm": "mcp-server-cloudflare"
+      }
+    },
+    {
+      "id": "youtube",
+      "name": "Youtube",
+      "description": "Uses yt-dlp to download subtitles from YouTube and connects it to claude.ai via Model Context Protocol.",
+      "author": "Community",
+      "category": "Media",
+      "type": "community",
+      "tags": ["Community", "Youtube", "Media"],
+      "version": "1.0.0",
+      "repository": "https://github.com/kimtaeyoon83/mcp-youtube-transcript",
+      "documentation": "https://github.com/kimtaeyoon83/mcp-youtube-transcript/blob/main/README.md",
+      "featured": false,
+      "tools": ["get_transcript", "download_subtitles"],
+      "resources": ["youtube://"],
+      "installation": {
+        "python": "mcp-youtube-transcript"
+      }
+    },
+    {
+      "id": "security-scanner",
+      "name": "Security Scanner",
+      "description": "A security vulnerability scanner built with MCP plugins for analyzing JavaScript code.",
+      "author": "Community",
+      "category": "Security",
+      "type": "community",
+      "tags": ["Community", "Security"],
+      "version": "1.0.0",
+      "repository": "https://github.com/security-scanner/mcp-security-scanner",
+      "documentation": "https://github.com/security-scanner/mcp-security-scanner/blob/main/README.md",
+      "featured": false,
+      "tools": ["scan_vulnerabilities", "analyze_dependencies", "security_audit"],
+      "resources": ["security://"],
+      "installation": {
+        "npm": "mcp-security-scanner"
+      }
+    },
+    {
+      "id": "eyevinn",
+      "name": "Eyevinn",
+      "description": "MCP Server for Eyevinn Open Source Cloud API, enabling creation of solutions based on open web services.",
+      "author": "Community",
+      "category": "Cloud",
+      "type": "community",
+      "tags": ["Community", "Cloud", "API"],
+      "version": "1.0.0",
+      "repository": "https://github.com/Eyevinn/mcp-server-eyevinn",
+      "documentation": "https://github.com/Eyevinn/mcp-server-eyevinn/blob/main/README.md",
+      "featured": false,
+      "tools": ["create_service", "manage_workflow", "get_status"],
+      "resources": ["eyevinn://"],
+      "installation": {
+        "npm": "mcp-server-eyevinn"
+      }
+    },
+    {
+      "id": "search1api",
+      "name": "Search1API",
+      "description": "MCP server for Search1API web search capabilities",
+      "author": "Community",
+      "category": "Search",
+      "type": "community",
+      "tags": ["Community", "Search", "API"],
+      "version": "1.0.0",
+      "repository": "https://github.com/search1api/mcp-server-search1api",
+      "documentation": "https://github.com/search1api/mcp-server-search1api/blob/main/README.md",
+      "featured": false,
+      "tools": ["web_search", "image_search", "news_search"],
+      "resources": ["search1api://"],
+      "installation": {
+        "npm": "mcp-server-search1api"
+      }
+    },
+    {
+      "id": "k8s-go",
+      "name": "K8S Go",
+      "description": "Kubernetes management and operations server",
+      "author": "Community",
+      "category": "Cloud",
+      "type": "community",
+      "tags": ["Community", "Cloud", "Kubernetes"],
+      "version": "1.0.0",
+      "repository": "https://github.com/kubernetes/mcp-server-k8s",
+      "documentation": "https://github.com/kubernetes/mcp-server-k8s/blob/main/README.md",
+      "featured": false,
+      "tools": ["get_pods", "create_deployment", "scale_deployment", "get_services"],
+      "resources": ["k8s://"],
+      "installation": {
+        "go": "github.com/kubernetes/mcp-server-k8s"
+      }
+    },
+    {
+      "id": "duckdb",
+      "name": "DuckDB",
+      "description": "A Model Context Protocol (MCP) server implementation for DuckDB, providing database interaction capabilities through MCP tools.",
+      "author": "Community",
+      "category": "Database",
+      "type": "community",
+      "tags": ["Community", "Database", "DuckDB"],
+      "version": "1.0.0",
+      "repository": "https://github.com/duckdb/mcp-server-duckdb",
+      "documentation": "https://github.com/duckdb/mcp-server-duckdb/blob/main/README.md",
+      "featured": false,
+      "tools": ["execute_query", "list_tables", "describe_table", "import_data"],
+      "resources": ["duckdb://"],
+      "installation": {
+        "python": "mcp-server-duckdb"
+      }
+    },
+    {
+      "id": "arxiv",
+      "name": "ArXiv",
+      "description": "A powerful and flexible service for searching and analyzing arXiv papers.",
+      "author": "Community",
+      "category": "Research",
+      "type": "community",
+      "tags": ["Community", "Search", "ArXiv"],
+      "version": "1.0.0",
+      "repository": "https://github.com/arxiv/mcp-server-arxiv",
+      "documentation": "https://github.com/arxiv/mcp-server-arxiv/blob/main/README.md",
+      "featured": false,
+      "tools": ["search_papers", "get_paper_details", "download_paper"],
+      "resources": ["arxiv://"],
+      "installation": {
+        "python": "mcp-server-arxiv"
+      }
+    },
+    {
+      "id": "chatsum",
+      "name": "Chatsum",
+      "description": "A MCP Server is used to summarize your chat messages.",
+      "author": "Community",
+      "category": "AI Tools",
+      "type": "community",
+      "tags": ["Community", "Agent"],
+      "version": "1.0.0",
+      "repository": "https://github.com/chatsum/mcp-server-chatsum",
+      "documentation": "https://github.com/chatsum/mcp-server-chatsum/blob/main/README.md",
+      "featured": false,
+      "tools": ["summarize_chat", "extract_key_points", "generate_summary"],
+      "resources": ["chatsum://"],
+      "installation": {
+        "python": "mcp-server-chatsum"
+      }
+    },
+    {
+      "id": "bluesky",
+      "name": "Bluesky",
+      "description": "A simple MCP server that can enable MCP clients to query Bluesky instances.",
+      "author": "Community",
+      "category": "Social",
+      "type": "community",
+      "tags": ["Community", "Social"],
+      "version": "1.0.0",
+      "repository": "https://github.com/bluesky-social/mcp-server-bluesky",
+      "documentation": "https://github.com/bluesky-social/mcp-server-bluesky/blob/main/README.md",
+      "featured": false,
+      "tools": ["post_message", "get_timeline", "search_posts", "get_profile"],
+      "resources": ["bluesky://"],
+      "installation": {
+        "python": "mcp-server-bluesky"
+      }
+    },
+    {
+      "id": "bigquery",
+      "name": "BigQuery",
+      "description": "A Model Context Protocol server that provides access to BigQuery. This server enables LLMs to inspect database schemas and execute queries.",
+      "author": "Community",
+      "category": "Database",
+      "type": "community",
+      "tags": ["Community", "Database", "Google"],
+      "version": "1.0.0",
+      "repository": "https://github.com/google-cloud/mcp-server-bigquery",
+      "documentation": "https://github.com/google-cloud/mcp-server-bigquery/blob/main/README.md",
+      "featured": false,
+      "tools": ["execute_query", "list_datasets", "list_tables", "describe_table"],
+      "resources": ["bigquery://"],
+      "installation": {
+        "python": "mcp-server-bigquery"
+      }
+    },
+    {
+      "id": "exa",
+      "name": "Exa",
+      "description": "A Model Context Protocol (MCP) server lets AI assistants like Claude use the Exa AI Search API for web searches. This setup allows AI models to access real-time web information and search results.",
+      "author": "Community",
+      "category": "Search",
+      "type": "community",
+      "tags": ["Community", "Search", "AI"],
+      "version": "1.0.0",
+      "repository": "https://github.com/exa-labs/mcp-server-exa",
+      "documentation": "https://github.com/exa-labs/mcp-server-exa/blob/main/README.md",
+      "featured": false,
+      "tools": ["web_search", "neural_search", "find_similar"],
+      "resources": ["exa://"],
+      "installation": {
+        "python": "mcp-server-exa"
+      }
+    },
+    {
+      "id": "tavily",
+      "name": "Tavily",
+      "description": "tavily-search MCP server",
+      "author": "Community",
+      "category": "Search",
+      "type": "community",
+      "tags": ["Community", "Search"],
+      "version": "1.0.0",
+      "repository": "https://github.com/tavily-ai/mcp-server-tavily",
+      "documentation": "https://github.com/tavily-ai/mcp-server-tavily/blob/main/README.md",
+      "featured": false,
+      "tools": ["search", "get_search_context", "extract_content"],
+      "resources": ["tavily://"],
+      "installation": {
+        "python": "mcp-server-tavily"
+      }
+    },
+    {
+      "id": "ns-travel",
+      "name": "NS Travel Information",
+      "description": "An MCP server that provides access to NS (Dutch Railways) travel information.",
+      "author": "Community",
+      "category": "Travel",
+      "type": "community",
+      "tags": ["Community", "Travel"],
+      "version": "1.0.0",
+      "repository": "https://github.com/ns-api/mcp-server-ns",
+      "documentation": "https://github.com/ns-api/mcp-server-ns/blob/main/README.md",
+      "featured": false,
+      "tools": ["get_departures", "plan_journey", "get_disruptions"],
+      "resources": ["ns://"],
+      "installation": {
+        "python": "mcp-server-ns"
+      }
+    },
+    {
+      "id": "playwright",
+      "name": "Playwright",
+      "description": "Browser automation and testing server using Playwright",
+      "author": "Community",
+      "category": "Automation",
+      "type": "community",
+      "tags": ["Community", "Browser", "Automation"],
+      "version": "1.0.0",
+      "repository": "https://github.com/microsoft/mcp-server-playwright",
+      "documentation": "https://github.com/microsoft/mcp-server-playwright/blob/main/README.md",
+      "featured": false,
+      "tools": ["navigate", "click", "type", "screenshot", "get_content", "wait_for_element"],
+      "resources": ["playwright://"],
+      "installation": {
+        "npm": "mcp-server-playwright"
+      }
+    },
+    {
+      "id": "perplexity",
+      "name": "Perplexity",
+      "description": "AI-powered search and question answering server",
+      "author": "Community",
+      "category": "Search",
+      "type": "community",
+      "tags": ["Community", "Search"],
+      "version": "1.0.0",
+      "repository": "https://github.com/perplexity-ai/mcp-server-perplexity",
+      "documentation": "https://github.com/perplexity-ai/mcp-server-perplexity/blob/main/README.md",
+      "featured": false,
+      "tools": ["ask_question", "search_web", "get_answer"],
+      "resources": ["perplexity://"],
+      "installation": {
+        "python": "mcp-server-perplexity"
+      }
+    },
+    {
+      "id": "docker",
+      "name": "Docker",
+      "description": "A powerful Model Context Protocol (MCP) server for Docker operations, enabling seamless container and compose stack management through standardized MCP tools.",
+      "author": "Community",
+      "category": "DevOps",
+      "type": "community",
+      "tags": ["Community", "Docker", "Cloud"],
+      "version": "1.0.0",
+      "repository": "https://github.com/docker/mcp-server-docker",
+      "documentation": "https://github.com/docker/mcp-server-docker/blob/main/README.md",
+      "featured": false,
+      "tools": ["list_containers", "start_container", "stop_container", "build_image", "run_container"],
+      "resources": ["docker://"],
+      "installation": {
+        "python": "mcp-server-docker"
+      }
+    },
+    {
+      "id": "mongodb",
+      "name": "MongoDB",
+      "description": "A Model Context Protocol (MCP) server that enables LLMs to interact directly with MongoDB databases. Query collections, inspect schemas, and perform database operations.",
+      "author": "Community",
+      "category": "Database",
+      "type": "community",
+      "tags": ["Community", "Database"],
+      "version": "1.0.0",
+      "repository": "https://github.com/mongodb/mcp-server-mongodb",
+      "documentation": "https://github.com/mongodb/mcp-server-mongodb/blob/main/README.md",
+      "featured": false,
+      "tools": ["find_documents", "insert_document", "update_document", "delete_document", "list_collections"],
+      "resources": ["mongodb://"],
+      "installation": {
+        "python": "mcp-server-mongodb"
+      }
+    },
+    {
+      "id": "pandoc",
+      "name": "Pandoc",
+      "description": "A Model Context Protocol server for document format conversion using pandoc. This server provides tools to transform content between various document formats.",
+      "author": "Community",
+      "category": "Document",
+      "type": "community",
+      "tags": ["Community", "Document"],
+      "version": "1.0.0",
+      "repository": "https://github.com/pandoc/mcp-server-pandoc",
+      "documentation": "https://github.com/pandoc/mcp-server-pandoc/blob/main/README.md",
+      "featured": false,
+      "tools": ["convert_document", "list_formats", "get_format_info"],
+      "resources": ["pandoc://"],
+      "installation": {
+        "python": "mcp-server-pandoc"
+      }
+    },
+    {
+      "id": "notion",
+      "name": "Notion",
+      "description": "A simple Model Context Protocol (MCP) server that integrates with Notion's API to manage my personal todo list through Claude.",
+      "author": "Community",
+      "category": "Productivity",
+      "type": "community",
+      "tags": ["Community", "Productivity"],
+      "version": "1.0.0",
+      "repository": "https://github.com/notion-so/mcp-server-notion",
+      "documentation": "https://github.com/notion-so/mcp-server-notion/blob/main/README.md",
+      "featured": false,
+      "tools": ["create_page", "update_page", "search_pages", "get_database"],
+      "resources": ["notion://"],
+      "installation": {
+        "python": "mcp-server-notion"
+      }
+    }
+  ]
+}

@@ -3,6 +3,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const compression = require('compression');
 const path = require('path');
+const fs = require('fs');
 require('dotenv').config();
 
 const app = express();
@@ -14,99 +15,18 @@ app.use(compression());
 app.use(cors());
 app.use(express.json());
 
-// Sample MCP servers data
-const mcpServers = [
-  {
-    id: 'filesystem',
-    name: 'Filesystem MCP Server',
-    description: 'Provides secure file system operations for reading, writing, and managing files and directories.',
-    author: 'Anthropic',
-    category: 'File Management',
-    tags: ['filesystem', 'files', 'directories'],
-    version: '1.0.0',
-    repository: 'https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem',
-    documentation: 'https://modelcontextprotocol.io/docs/servers/filesystem',
-    featured: true,
-    tools: ['read_file', 'write_file', 'create_directory', 'list_directory', 'move_file', 'search_files'],
-    resources: ['file://', 'directory://'],
-    installation: {
-      npm: '@modelcontextprotocol/server-filesystem',
-      python: 'mcp-server-filesystem'
-    }
-  },
-  {
-    id: 'github',
-    name: 'GitHub MCP Server',
-    description: 'Interact with GitHub repositories, issues, pull requests, and more through the GitHub API.',
-    author: 'Anthropic',
-    category: 'Development',
-    tags: ['github', 'git', 'repositories', 'issues'],
-    version: '1.2.0',
-    repository: 'https://github.com/modelcontextprotocol/servers/tree/main/src/github',
-    documentation: 'https://modelcontextprotocol.io/docs/servers/github',
-    featured: true,
-    tools: ['create_issue', 'create_pull_request', 'get_repository', 'search_repositories', 'get_file_contents'],
-    resources: ['github://'],
-    installation: {
-      npm: '@modelcontextprotocol/server-github',
-      python: 'mcp-server-github'
-    }
-  },
-  {
-    id: 'postgres',
-    name: 'PostgreSQL MCP Server',
-    description: 'Connect to PostgreSQL databases and execute queries, manage schemas, and perform database operations.',
-    author: 'Anthropic',
-    category: 'Database',
-    tags: ['postgresql', 'database', 'sql'],
-    version: '1.1.0',
-    repository: 'https://github.com/modelcontextprotocol/servers/tree/main/src/postgres',
-    documentation: 'https://modelcontextprotocol.io/docs/servers/postgres',
-    featured: false,
-    tools: ['execute_query', 'list_tables', 'describe_table', 'create_table'],
-    resources: ['postgres://'],
-    installation: {
-      npm: '@modelcontextprotocol/server-postgres',
-      python: 'mcp-server-postgres'
-    }
-  },
-  {
-    id: 'slack',
-    name: 'Slack MCP Server',
-    description: 'Send messages, manage channels, and interact with Slack workspaces through the Slack API.',
-    author: 'Anthropic',
-    category: 'Communication',
-    tags: ['slack', 'messaging', 'communication'],
-    version: '1.0.0',
-    repository: 'https://github.com/modelcontextprotocol/servers/tree/main/src/slack',
-    documentation: 'https://modelcontextprotocol.io/docs/servers/slack',
-    featured: false,
-    tools: ['send_message', 'list_channels', 'create_channel', 'get_user_info'],
-    resources: ['slack://'],
-    installation: {
-      npm: '@modelcontextprotocol/server-slack',
-      python: 'mcp-server-slack'
-    }
-  },
-  {
-    id: 'weather',
-    name: 'Weather MCP Server',
-    description: 'Get current weather conditions, forecasts, and weather alerts for locations worldwide.',
-    author: 'Community',
-    category: 'Utilities',
-    tags: ['weather', 'forecast', 'api'],
-    version: '0.9.0',
-    repository: 'https://github.com/mcp-community/weather-server',
-    documentation: 'https://github.com/mcp-community/weather-server/blob/main/README.md',
-    featured: false,
-    tools: ['get_current_weather', 'get_forecast', 'get_weather_alerts'],
-    resources: ['weather://'],
-    installation: {
-      npm: 'mcp-weather-server',
-      python: 'mcp-weather-server'
-    }
-  }
-];
+// Load MCP servers data from index.json
+let mcpServersData;
+try {
+  const indexPath = path.join(__dirname, '../index.json');
+  const indexData = JSON.parse(fs.readFileSync(indexPath, 'utf8'));
+  mcpServersData = indexData;
+} catch (error) {
+  console.error('Error loading index.json:', error);
+  mcpServersData = { servers: [] };
+}
+
+const mcpServers = mcpServersData.servers;
 
 // Integration examples for different clients
 const integrationExamples = {
@@ -209,31 +129,87 @@ app.get('/api/integration/:client/:serverId', (req, res) => {
   }
 
   // Generate integration config based on server type
-  let command, args, env;
+  let command, args, env = {};
   
   if (server.installation.npm) {
     command = 'npx';
     args = [server.installation.npm];
-    env = {};
   } else if (server.installation.python) {
     command = 'python';
     args = ['-m', server.installation.python];
-    env = {};
+  } else if (server.installation.go) {
+    command = 'go';
+    args = ['run', server.installation.go];
   } else {
     command = 'node';
     args = ['path/to/server'];
-    env = {};
   }
 
   // Add server-specific environment variables
-  if (server.id === 'github') {
-    env.GITHUB_PERSONAL_ACCESS_TOKEN = 'your_github_token_here';
-  } else if (server.id === 'postgres') {
-    env.POSTGRES_CONNECTION_STRING = 'postgresql://user:password@localhost:5432/database';
-  } else if (server.id === 'slack') {
-    env.SLACK_BOT_TOKEN = 'your_slack_bot_token_here';
-  } else if (server.id === 'weather') {
-    env.WEATHER_API_KEY = 'your_weather_api_key_here';
+  switch (server.id) {
+    case 'github':
+      env.GITHUB_PERSONAL_ACCESS_TOKEN = 'your_github_token_here';
+      break;
+    case 'gitlab':
+      env.GITLAB_PERSONAL_ACCESS_TOKEN = 'your_gitlab_token_here';
+      break;
+    case 'postgresql':
+      env.POSTGRES_CONNECTION_STRING = 'postgresql://user:password@localhost:5432/database';
+      break;
+    case 'slack':
+      env.SLACK_BOT_TOKEN = 'your_slack_bot_token_here';
+      break;
+    case 'google-drive':
+      env.GOOGLE_APPLICATION_CREDENTIALS = 'path/to/credentials.json';
+      break;
+    case 'google-maps':
+      env.GOOGLE_MAPS_API_KEY = 'your_google_maps_api_key_here';
+      break;
+    case 'brave-search':
+      env.BRAVE_SEARCH_API_KEY = 'your_brave_search_api_key_here';
+      break;
+    case 'sentry':
+      env.SENTRY_AUTH_TOKEN = 'your_sentry_auth_token_here';
+      env.SENTRY_ORG = 'your_sentry_org';
+      break;
+    case 'cloudflare':
+      env.CLOUDFLARE_API_TOKEN = 'your_cloudflare_api_token_here';
+      break;
+    case 'bigquery':
+      env.GOOGLE_APPLICATION_CREDENTIALS = 'path/to/credentials.json';
+      env.GOOGLE_CLOUD_PROJECT = 'your_project_id';
+      break;
+    case 'mongodb':
+      env.MONGODB_CONNECTION_STRING = 'mongodb://localhost:27017/database';
+      break;
+    case 'exa':
+      env.EXA_API_KEY = 'your_exa_api_key_here';
+      break;
+    case 'tavily':
+      env.TAVILY_API_KEY = 'your_tavily_api_key_here';
+      break;
+    case 'perplexity':
+      env.PERPLEXITY_API_KEY = 'your_perplexity_api_key_here';
+      break;
+    case 'search1api':
+      env.SEARCH1API_KEY = 'your_search1api_key_here';
+      break;
+    case 'notion':
+      env.NOTION_API_KEY = 'your_notion_api_key_here';
+      break;
+    case 'bluesky':
+      env.BLUESKY_USERNAME = 'your_bluesky_username';
+      env.BLUESKY_PASSWORD = 'your_bluesky_password';
+      break;
+    case 'ns-travel':
+      env.NS_API_KEY = 'your_ns_api_key_here';
+      break;
+    case 'everart':
+      env.EVERART_API_KEY = 'your_everart_api_key_here';
+      break;
+    default:
+      // No specific environment variables needed
+      break;
   }
 
   const config = clientConfig.config

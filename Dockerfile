@@ -14,8 +14,10 @@ RUN npm install
 COPY server ./server
 # Copy built client
 COPY --from=client-build /app/client/build ./client/build
+COPY index.json ./
 # Copy .env if exists
 COPY .env .env
+
 EXPOSE 5000
 ENV NODE_ENV=production
 CMD ["node", "server/index.js"] 

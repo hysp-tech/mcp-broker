@@ -1,6 +1,9 @@
 include makefiles/help.mk
 # Makefile for MCP Broker
 
+DOCKER_REGISTRY := hyperspacetech/mcp-broker
+DOCKER_TAG := latest
+
 install:  ## Install all dependencies
 	npm run install-all
 
@@ -21,6 +24,10 @@ develop:  ## Start the project in development mode
 
 docker-build:  ## Build the project in a docker container
 	docker build -t mcp-broker .
+
+docker-push:  ## Push the project to a docker container
+	docker tag mcp-broker:latest ${DOCKER_REGISTRY}:${DOCKER_TAG}
+	docker push ${DOCKER_REGISTRY}:${DOCKER_TAG}
 
 docker-up:  ## Start the project in a docker container
 	docker-compose up --build
